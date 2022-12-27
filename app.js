@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const PORT = 5000;
 const colors = require('./colors.json')
+const cors = require('cors');
+app.use(cors())
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
@@ -13,6 +15,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/colors', (req, res) => {
+  //res.set("Access-Control-Allow-Origin", "*")
   res.json(colors)
 })
 

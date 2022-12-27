@@ -8,9 +8,33 @@ Creating a simple colors app
 <img src="./images/colors-app.png" width="470" alt="Simple colors app">
 
 ## Notes on what I learned
-* Using a fetch request from the frontend (http://localhost:3000) to backend (http://localhost:5000) can result in a CORS error. 
+* Using a fetch request from the frontend (http://localhost:3000) to backend (http://localhost:5000) can result in a CORS error.
 
 <img src="images/cors-error.png" width="470" alt="CORS error in browser's console">
+
+* There are 3 ways to enable CORS on a server:
+    1. Allow all origins to access the resource by using the 'wild card' property ('*') in the response header e.g. `res.set("Access-Control-Allow-Origin", "*")`
+    2. Allow one certain origin to access the resource by specifying the allowed origin in the response header e.g. `res.set('Access-Control-Allow-Origin', 'http://localhost:3000');`
+    3. Allow all or certain origins to access the resource using the `cors middleware` e.g.
+
+      const cors=require('cors');
+      app.use(cors())
+
+      or
+
+      const options = {
+        origin: [
+          'http://localhost:3000',
+          'http://localhost:8080'
+        ]
+      }
+      app.use(cors(options))
+
+      or
+
+      app.get('/colors',cors(),(req,res)=>{
+        res.json(colors)
+      })
 
 * **Git related:** On my first commit, I noticed that the "client" file pushed to GitHub had an arrow in it and the folder was not clickable.
   * <img src="images/folder-arrow.png" width="100" alt="Arrow on 'client' folder">

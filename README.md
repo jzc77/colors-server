@@ -41,3 +41,5 @@ Creating a simple colors app
   * This was due to another .git folder in the client folder. The .git folder was created by default when I created the React app via `npx create-react-app client`.
   * To solve this, I deleted the .git folder and .gitignore file in the "client" folder. Then, I had to run `git rm --cached client`. I pushed to GitHub again and the arrow disappeared from the "client" folder. I was able to click into the folder on GitHub.
   * <img src="images/folder-no-arrow.png" width="100" alt="No arrow on 'client' folder">
+
+* Axios vs fetch(): `axios` automatically converts requested data to JSON, while `fetch()` requires the use of `response.json()` (Source: https://blog.logrocket.com/axios-vs-fetch-best-http-requests/)

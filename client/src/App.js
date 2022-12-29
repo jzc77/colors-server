@@ -13,7 +13,8 @@ function App() {
 
   // Added to get data from cors-disabled-server
   const getUser = async() => {
-    const response = await fetch('http://localhost:8080/user')
+    //const response = await fetch('http://localhost:8080/user')
+    const response = await fetch('http://localhost:5000/user')
     const data = await response.json();
     console.log({data});
   }

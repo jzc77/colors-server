@@ -8,7 +8,7 @@ Creating a simple colors app
 <img src="./images/colors-app.png" width="470" alt="Simple colors app">
 
 ## Notes on what I learned
-* Using a fetch request from the frontend (http://localhost:3000) to backend (http://localhost:5000) can result in a CORS error.
+* Using a fetch request from the frontend (http://localhost:3000) to backend (http://localhost:5000) can result in a CORS error because they are both on different domains/origins. By default, cross-origin resource sharing is disabled. Because every HTTP request sends a request header about the request origin, the backend "knows" that the request is from a different origin.
 
 <img src="images/cors-error.png" width="470" alt="CORS error in browser's console">
 
@@ -45,4 +45,4 @@ Creating a simple colors app
 * Axios vs fetch(): `axios` automatically converts requested data to JSON, while `fetch()` requires the use of `response.json()` (Source: https://blog.logrocket.com/axios-vs-fetch-best-http-requests/)
 
 * A **proxy server** is a 'gateway' server that has CORS enabled and has access to server resources. The frontend/client sends requests to the proxy server, which in turn gets the server resources. The proxy server will send back the resources to the client.
-  * E.g. In this tutorial, the frontend/client (App.js) tried to request a "CORS disabled" server (`http://localhost:8080/user`)(index.js). This resulted in a CORS error. However, the client was instead re-routed to the proxy server using `http://localhost:5000/user` (app.js). The proxy server had CORS enabled with `app.use(cors())` and was able to access the "CORS disabled" server using a GET request with `axios.get('http://localhost:8080/user')` (app.js).
+  * E.g. In this tutorial, the frontend/client (App.js) tried to request a "CORS disabled" server (`http://localhost:8080/user`) (index.js). This resulted in a CORS error. However, the client was instead re-routed to the proxy server using `http://localhost:5000/user` (app.js). The proxy server had CORS enabled with `app.use(cors())` and was able to access the "CORS disabled" server using a GET request with `axios.get('http://localhost:8080/user')` (app.js).
